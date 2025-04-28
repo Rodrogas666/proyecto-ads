@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;900&family=Poppins:ital,wght@0,400;0,500;1,300&family=Ubuntu:ital,wght@0,400;0,500;1,700&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+.padre {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    height: 33rem;
+    gap: 2rem;
+
+}
+
+.sub {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.imagen {
+    height: auto;
+    max-width: 27rem;
+    width: auto;
+}
+
+img {
+    height: auto;
+    width: auto;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    gap: 4.5rem;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+}
+
+#uno {
+    background-color: #F76313;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 9rem;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+#uno:hover {
+    background-color: #ffffff;
+    color: #F76313 ;
+    border: solid 2px #F76313;
+}
+
+#telefono {
+    width: 30px;
+    height: 25px;
+    margin-top: 0.5rem;
+}
+
+#dos {
+    background-color: transparent;
+    color: black;
+    border-color: transparent;
+    cursor: pointer;
+
+
+}
+
+.cositas {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#checkbox1 {
+    accent-color: #F76313;
+
+}
+
+#checkbox2 {
+    accent-color: #F76313;
+}
+
+.padretocho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: auto;
+    max-height: auto;
+    gap: 4rem;
+}
+
+.padre2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    gap: 1.5rem;
+    background-color: #FFEFDE80;
+    width: 100%;
+}
+
+.cartas {
+    display: flex;
+    flex-direction: row;
+}
+
+.sub2 {
+    width: auto;
+    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.cart {
+    background-color: white;
+    border-color: transparent;
+    border-radius: 44px;
+    width: 280px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cart:hover {
+    background-color: #F76313;
+    color: white;
+    transition: 0.5s;
+
+}
+
+.cartas {
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#img1 {
+    height: 46px;
+    width: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#img2 {
+    height: 46px;
+    width: 62px;
+}
+
+#img3 {
+    height: 46px;
+    width: 62px;
+}
+
+#img4 {
+    height: 46px;
+    width: 62px;
+}
+
+#tres {
+    background-color: #F76313;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 9rem;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-bottom: 2rem;
+}
+
+#tres:hover {
+    background-color: #ffffff;
+    color: #F76313 ;
+    border: solid 2px #F76313;
+}
+
+.boton2 {
+    margin-top: 2rem;
+}
+
+.padre3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+
+}
+
+.sub3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2.5rem;
+
+}
+
+.cards-img {
+    display: flex;
+    flex-direction: column;
+    border-radius: 23px;
+    background-color: #FFE4C8;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+    height: 20rem;
+    overflow: hidden;
+    width: 15rem;
+    gap: 1.5rem;
+}
+
+#personas {
+    height: 10rem;
+    border-radius: 4rem;
+    max-width: 12rem;
+}
+
+#boton3 {
+    background-color: #F76313;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 9rem;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;;
+}
+
+#boton3:hover {
+    background-color: #ffffff;
+    color: #F76313 ;
+    border: solid 2px #F76313;
+}
+
+.padre4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #FFF4EA;
+    width: 100%;
+}
+
+.sub4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    height: 30rem;
+
+}
+
+.lado1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 35rem;
+    height: 25rem;
+    gap: 2.5rem;
+}
+
+
+
+.lado2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 45rem;
+    background-color: white;
+    height: 25rem;
+    border-radius: 16px;
+    gap: 3rem;
+}
+
+.lado2-0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: start;
+    gap: 3rem;
+    width: 13rem;
+}
+
+.texl1 {
+    display: flex;
+    text-align: start;
+
+}
+
+.perrito-img {
+    display: flex;
+    height: 17rem;
+    width: 15rem;
+    border-radius: 15px;
+}
+
+#perrito-img {
+    height: 15rem;
+}
+
+#boton4 {
+    background-color: #F76313;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 9rem;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#boton4:hover {
+    background-color: #ffffff;
+    color: #F76313 ;
+    border: solid 2px #F76313;
+}
+
+.papu-m{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 23rem;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.mid-f{
+    display: flex;
+    flex-direction: row;
+    gap: 17rem;
+}
+
+.info-p{
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    gap: 1rem;
+}
+
+#space{
+    width: 18rem;
+
+}

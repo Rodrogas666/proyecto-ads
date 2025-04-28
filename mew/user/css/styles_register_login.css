@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    font-family: 'Kalam', cursive;
+    background: #d4c9c9;
+}
+
+#aña{
+    height: 700px;
+    margin-top: -450px;
+    margin-left: 570px;
+    width: 410px;
+}
+
+.form-box{
+    width: 970px;
+    height: 555px;
+    position: relative;
+    margin: 5% auto;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container{
+background-color: transparent;
+margin-left: 50px;
+margin-top: 30px;
+
+}
+
+#boton1{
+    width: 350px;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+#boton{
+    width: 350px;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-color: black;
+}
+
+#input{
+    width: 350px;
+    font-size: 15px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: rgb(114, 114, 109);
+    font-family: 'Kalam', cursive;
+}
+
+#uwu{
+    font-size: 15px;
+    margin-top: -23px;
+    margin-left: 25px;
+}
+
+/*sigin*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    font-family: 'Kalam', cursive;
+    background: #d4c9c9;
+}
+
+#img{
+    height: 750px;
+    margin-top: -650px;
+    margin-right: -520px;
+    width: 410px;
+}
+
+.for-box{
+    width: 970px;
+    height: 655px;
+    position: relative;
+    margin: 5% auto;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cuadrotexto{
+background-color: transparent;
+margin-left: 540px;
+margin-top: 30px;
+
+
+}
+
+#boton1{
+    width: 350px;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+#boton{
+    width: 350px;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-color: black;
+}
+
+#input{
+    width: 350px;
+    font-size: 15px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: rgb(114, 114, 109);
+}
+
+#uwu{
+    font-size: 15px;
+    margin-top: -23px;
+    margin-left: 25px;
+}
+
