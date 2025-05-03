@@ -2,7 +2,6 @@
 
 //El objetivo de este archivo es recopilar todas las mascotas
 
-//Modificacion de Prueba
 include_once('../../config/bd.php');
 $conexionBD = BD::crearInstancia();
 
