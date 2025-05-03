@@ -14,7 +14,7 @@ class BD {
             
             //!Saz: Cambie la contraseña de root por como tengo configurado el mysql xd 
 
-            self::$instancia = new PDO('mysql:host=localhost;dbname=veterinaria', 'root', '', $opciones);
+            self::$instancia = new PDO('mysql:host=localhost;dbname=veterinaria', 'root', 'root', $opciones);
             // echo "conectado";
         }
         return self::$instancia;

@@ -28,6 +28,27 @@ include_once('./_data_endedCitas.php');
     .main {
         margin: 2rem;
     }
+
+    .btn-eliminar {
+        background-color: #ff4d4d; /* Rojo */
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn-eliminar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-eliminar:hover {
+        background-color: #e60000; /* Rojo más oscuro */
+    }
 </style>
 
 <div>
@@ -43,6 +64,11 @@ include_once('./_data_endedCitas.php');
                 <p> <span style="font-weight:bold;">Asunto:</span> <?php echo $cita['asunto'] ?></p>
                 <p> <span style="font-weight:bold;">Fecha:</span> <?php echo $cita['fecha'] ?></p>
                 <p> <span style="font-weight:bold;">Mascota:</span> <?php echo $cita['nombre'] ?></p>
+                <button class="btn-eliminar">
+                    <a href="logic_eliminarCita.php?id=<?php echo $cita['id_cita']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                        Eliminar
+                    </a>
+                </button>
             </div>
         <?php } ?>
     </div>
