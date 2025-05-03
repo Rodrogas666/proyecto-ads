@@ -68,7 +68,7 @@ include_once('mis_citas_vet.php');
             <p> <span style="font-weight:bold;">Mascota:</span> <?php echo $cita['nombre'] ?></p>
             <br>
             <br>
-            <button class="btn-finalizar"><a href=".logic_finalizarCita.php?id=<?=$cita['id_cita']?>"> Finalizar cita</a></button>
+            <button class="btn-finalizar"><a href="logic_finalizarCita.php?id=<?=$cita['id_cita']?>"> Finalizar cita</a></button>
         </div>
             
     <?php } ?>

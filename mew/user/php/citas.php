@@ -1,11 +1,120 @@
 <?php
+include_once('../../../config/bd.php');
+
+// Hace la conexión a la base de datos
+$conexionBD = BD::crearInstancia();
+
+// Variables iniciales
+$asunto = isset($_POST['asunto']) ? trim($_POST['asunto']) : '';
+$mensaje = isset($_POST['mensaje']) ? trim($_POST['mensaje']) : '';
+$fecha_hora = isset($_POST['fecha']) ? trim($_POST['fecha']) : '';
+$estado = "Not taken";
+$id_cliente = $_SESSION['usuario'];
+$mascota = isset($_POST['mascota']) ? intval($_POST['mascota']) : 0;
+$accion = isset($_POST['accion']) ? trim($_POST['accion']) : '';
+
+// Procesar acciones
+if ($accion != '') {
+    switch ($accion) {
+        case 'agregar':
+            // Validar que la fecha no sea anterior a la actual
+            $fecha_actual = new DateTime();
+            $fecha_ingresada = new DateTime($fecha_hora);
+
+            if ($fecha_ingresada < $fecha_actual) {
+                echo "<script>
+                alert('La fecha no puede ser anterior a la fecha actual.');
+                window.location.href = 'vista_citas_usuario.php';
+                </script>";
+                exit();
+            }
+
+            // Inserta una nueva cita
+            $sql = "INSERT INTO citas (id_cita, asunto, fecha, estado, id_cliente, id_mascota) 
+                    VALUES (NULL, :asunto, :fecha, :estado, :id_cliente, :id_mascota)";
+            $consulta = $conexionBD->prepare($sql);
+            $consulta->bindParam(':asunto', $asunto);
+            $consulta->bindParam(':fecha', $fecha_hora);
+            $consulta->bindParam(':estado', $estado);
+            $consulta->bindParam(':id_cliente', $id_cliente);
+            $consulta->bindParam(':id_mascota', $mascota);
+            $consulta->execute();
+
+            echo "<script>
+            alert('Cita agendada :)');
+            window.location.href = 'vista_citas_usuario.php';
+            </script>";
+            break;
+
+        case 'editar':
+            // Actualiza una cita existente
+            $sql = "UPDATE citas SET asunto=:asunto, fecha=:fecha, estado=:estado 
+                    WHERE id_cita=:id_cita AND id_cliente=:id_cliente";
+            $consulta = $conexionBD->prepare($sql);
+            $consulta->bindParam(':id_cita', $id_cita);
+            $consulta->bindParam(':asunto', $asunto);
+            $consulta->bindParam(':fecha', $fecha_hora);
+            $consulta->bindParam(':estado', $estado);
+            $consulta->bindParam(':id_cliente', $id_cliente);
+            $consulta->execute();
+
+            echo "<script>
+            alert('Cita actualizada :)');
+            window.location.href = 'vista_citas_usuario.php';
+            </script>";
+            break;
+
+        case 'borrar':
+            // Elimina una cita
+            $sql = "DELETE FROM citas WHERE id_cita=:id_cita AND id_cliente=:id_cliente";
+            $consulta = $conexionBD->prepare($sql);
+            $consulta->bindParam(':id_cita', $id_cita);
+            $consulta->bindParam(':id_cliente', $id_cliente);
+            $consulta->execute();
+
+            echo "<script>
+            alert('Cita eliminada :)');
+            window.location.href = 'vista_citas_usuario.php';
+            </script>";
+            break;
+
+        default:
+            echo "<script>
+            alert('Acción no válida.');
+            window.location.href = 'vista_citas_usuario.php';
+            </script>";
+            break;
+    }
+}
+
+// Consultar mascotas del cliente
+$sql1 = "SELECT * FROM `clientemascotas` 
+         INNER JOIN mascota ON clientemascotas.id_mascota = mascota.id 
+         WHERE id_cliente = :id_cliente";
+$consulta1 = $conexionBD->prepare($sql1);
+$consulta1->bindParam(':id_cliente', $id_cliente);
+$consulta1->execute();
+$clientemascotas = $consulta1->fetchAll(PDO::FETCH_ASSOC);
+
+// Consultar citas del cliente
+$sql2 = "SELECT * FROM `clientemascotas` 
+         INNER JOIN citas ON clientemascotas.id_mascota = citas.id_mascota 
+         INNER JOIN mascota ON mascota.id = citas.id_mascota 
+         WHERE citas.id_cliente = :id_cliente";
+$consulta2 = $conexionBD->prepare($sql2);
+$consulta2->bindParam(':id_cliente', $id_cliente);
+$consulta2->execute();
+$clienteCitas = $consulta2->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<?php
+/*
+<?php
 
 include_once('../../../config/bd.php');
 //Hace la conexión a la base de datos
 $conexionBD = BD::crearInstancia();
 
-
-// session_start();
 $asunto = isset($_POST['asunto']) ? $_POST['asunto'] : '';
 $mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : '';
 $fecha_hora = isset($_POST['fecha']) ? $_POST['fecha'] : '';
@@ -14,25 +123,7 @@ $id_cliente = $_SESSION['usuario'];
 $mascota = isset($_POST['mascota']) ? $_POST['mascota'] : '';
 $mascota = intval($mascota);
 
-
-
-
 $accion = isset($_POST['accion']) ? $_POST['accion'] : '';
-
-
-
-// $sql="SELECT * FROM alumnos WHERE id = :id_cliente";
-// $consulta = $conexionBD->prepare($sql);
-// $consulta->bindParam(':id_cliente', $id_cliente);
-// $consulta=$conexionBD->prepare($sql);
-// $consulta->execute();
-// $clientes=$consulta->fetchAll(PDO::FETCH_ASSOC);
-
-
-// $listaClientes=$conexionBD->query($sql);
-// $clientes=$listaAlumnos->fetchAll();
-
-
 
 if ($accion != '') {
     switch ($accion) {
@@ -50,12 +141,6 @@ if ($accion != '') {
             alert('Cita agendada :)')
             window.location.href = 'vista_citas_usuario.php'
             </script>";
-
-            // header("Location: vista_citas_usuario.php");
-
-            // print_r($sql);
-
-
             break;
 
         case 'editar':
@@ -116,51 +201,21 @@ if ($accion != '') {
                 $arregloCursos[] = $curso['id'];
             }
 
-
             break;
 
-
         default:
-            # code...
             break;
     }
 }
 
-
 $sql1 = "SELECT * FROM `clientemascotas` INNER JOIN mascota ON clientemascotas.id_mascota = mascota.id WHERE id_cliente = $id_cliente";
 $listaClienteMascotas = $conexionBD->query($sql1);
 $clientemascotas = $listaClienteMascotas->fetchAll();
-
-// print_r($clientemascotas);
-
-// $sql2 = "SELECT * FROM `citas` WHERE id_cliente = $id_cliente";
-// $consulta = $conexionBD->prepare($sql2);
-// $consulta->execute();
-// $clienteCitas = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-// print_r($clienteCitas);
-//SELECT * FROM `clientemascotas` INNER JOIN citas ON clientemascotas.id_mascota = citas.id_mascota WHERE citas.id_cliente = 1
 
 $sql2 = "SELECT * FROM `clientemascotas` INNER JOIN citas ON clientemascotas.id_mascota = citas.id_mascota INNER JOIN mascota ON mascota.id = citas.id_mascota WHERE citas.id_cliente = $id_cliente";
 $consulta = $conexionBD->prepare($sql2);
 $consulta->execute();
 $clienteCitas = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
-
-// print_r($clientemascotas);
-// echo '<pre>';
-// var_dump($clientemascotas);
-// echo '</pre>';
-// echo "<br>";
-
-
-// $listaMascotas=$conexionBD->query($sql2);
-// $mascotas=$listaMascotas->fetchAll();
-// $sql2="SELECT * FROM mascota WHERE id = 1";
-// $consulta = $conexionBD->prepare($sql2);
-// $consulta->execute();
-// $mascotas = $consulta->fetch(PDO::FETCH_ASSOC);
-
-// print_r($mascotas);
-
 ?>
+*/
